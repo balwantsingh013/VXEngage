@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="LoginTestSuite">
+    <listeners>
+        <listener class-name="org.engage.CommonUtilities.TestNGListeners"/>
+
+    </listeners>
+    <test name="LoginTest">
+        <parameter name="username" value="customer" />
+        <parameter name="password" value="VmVydGV4MSE=" />
+        <classes>
+            <class name="org.engage.TestCases.HomePageTest" />
+        </classes>
+    </test>
+</suite>
