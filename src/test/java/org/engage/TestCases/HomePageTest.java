@@ -14,32 +14,13 @@ public class HomePageTest extends TestUtils {
     {
         HomePagePOM.clickOnPopUp();
     }
+    @Test
+    public void validateSideBarMenus()
+    {
+        HomePagePOM.clickOnPopUp();
+        HomePagePOM.validateSideBarMenus();
+    }
 
-    @Test(priority=2)
-    //@Parameters({"Account Summary"})
-   public void validateAccountSummaryMenu()
-    {
-        HomePagePOM.validateAccountSummaryMenu("Account Summary");
-    }
-    @Test(priority=3)
-    public void validateUsageInsightMenu()
-    {
-        HomePagePOM.validateUsageInsightsMenu("Usage Insight");
-    }
-    @Test(priority=4)
-    public void validateBillingMenu()
-    {
-        HomePagePOM.validateBillingMenu("Billings");
-    }
-    @Test(priority=5)
-    public void validatePaymentsMenu()
-    {
-        HomePagePOM.validatePaymentsMenu("Payments");
-    }
-    @Test(priority=6)
-    public void doLogout() throws InterruptedException {
-        HomePagePOM.doLogout();
-    }
 
 
 }

@@ -20,6 +20,7 @@ import java.util.Properties;
 import org.engage.Constants.FilePaths;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 
 public class BaseUtilities {
@@ -169,12 +170,11 @@ public class BaseUtilities {
         return true;
     }
 
-    public static boolean verifyMenuIsPresent(String MenuName, String locator) {
-            WebElement ele= getElement(locator);
-            String actText= ele.getText();
-            return actText.equals(MenuName);
-        }
-
+    public static void assertElementText(String element, String expectedText) {
+        WebElement ele= getElement(element);
+        String actualText = ele.getText();
+        Assert.assertEquals(actualText, expectedText, "Expected text: '" + expectedText + "', but got: '" + actualText + "'");
+    }
 
         public static String decryptPasswordNormal(String encryptedPassword) {
         byte[] decodedBytes = Base64.decodeBase64(encryptedPassword.getBytes());

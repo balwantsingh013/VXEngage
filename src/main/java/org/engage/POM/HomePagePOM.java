@@ -1,12 +1,9 @@
 package org.engage.POM;
-
-import org.apache.log4j.Logger;
 import org.engage.Base.BaseUtilities;
 import org.engage.Constants.FilePaths;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.testng.annotations.Test;
 
 import java.util.Properties;
 
@@ -21,7 +18,6 @@ public class HomePagePOM {
 
 
     public static void clickOnPopUp() {
-
 
         try {
             WebElement remindMeLaterButton = wait.until(ExpectedConditions.elementToBeClickable(clickOnElement(homePageProperties.getProperty("alertRemindMeLater"))));
@@ -39,30 +35,17 @@ public class HomePagePOM {
 
     };
 
-    public static void validateAccountSummaryMenu (String MenuName)
+    public static void validateSideBarMenus ()
     {
-        verifyMenuIsPresent(MenuName,homePageProperties.getProperty("menuAccountSummary"));
+       //Validate Account Summary
+       assertElementText(homePageProperties.getProperty("menuAccountSummary"),homePageProperties.getProperty("accountSummaryText"));
+       // Validate Billing Menu
+       assertElementText(homePageProperties.getProperty("menuBilling"),homePageProperties.getProperty("billingText"));
+       //Validate Usage Insight Menu
+       assertElementText(homePageProperties.getProperty("menuUsageInsights"),homePageProperties.getProperty("usageInsightText"));
+       // Validate Payment Menu
+       assertElementText(homePageProperties.getProperty("menuPayments"),homePageProperties.getProperty("paymentText"));
     }
 
-    public static void validateBillingMenu (String MenuName)
-    {
-        verifyMenuIsPresent(MenuName,homePageProperties.getProperty("menuBilling"));
-    }
 
-    public static void validateUsageInsightsMenu (String MenuName)
-    {
-        verifyMenuIsPresent(MenuName,homePageProperties.getProperty("menuUsageInsights"));
-    }
-
-    public static void validatePaymentsMenu (String MenuName)
-    {
-        verifyMenuIsPresent(MenuName,homePageProperties.getProperty("menuPayments"));
-    }
-
-    public static void doLogout () throws InterruptedException {
-        wait.until(ExpectedConditions.elementToBeClickable(clickOnElement(homePageProperties.getProperty("iconAccount"))));
-        Thread.sleep(2000);
-        wait.until(ExpectedConditions.elementToBeClickable(clickOnElement(homePageProperties.getProperty("btnLogout"))));
-        Thread.sleep(2000);
-    }
 }

@@ -2,7 +2,6 @@
 <suite name="LoginTestSuite">
     <listeners>
         <listener class-name="org.engage.CommonUtilities.TestNGListeners"/>
-
     </listeners>
     <test name="LoginTest">
         <parameter name="username" value="customer" />

@@ -2,30 +2,28 @@ package org.engage.TestBase;
 
 import org.engage.Base.BaseUtilities;
 import org.engage.POM.HomePagePOM;
+import org.engage.POM.LoginPagePOM;
 import org.testng.annotations.*;
 
-import static org.engage.POM.LoginPagePOM.loginApplication;
-
 public class TestUtils {
-   // static HomePagePOM homePagePOM;
 
-    @BeforeClass()
-    public void initialize()
-    {
+    LoginPagePOM loginPagePOM;
+    @BeforeMethod
+    public void initialize() {
         BaseUtilities.initialization();
+        loginPagePOM = new LoginPagePOM();
         new HomePagePOM();
     }
-    @BeforeClass()
+    @BeforeMethod
     @Parameters({ "username", "password" })
-    public static void login(String username, String password)
-    {
-        loginApplication(username,password);
-
+    public void login(String username, String password) {
+        loginPagePOM.loginApplication(username, password);
     }
-    @AfterClass
-    public void tearDown() {
+
+   @AfterMethod()
+    public void logoutApplication() throws InterruptedException {
+        loginPagePOM.doLogout();
         BaseUtilities.tearDown();
     }
 
 }
-
